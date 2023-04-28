@@ -23,13 +23,11 @@ function onInput(evt) {
   fetchCountries(name)
     .then(findCountry)
     .catch(error => console.log(error));
-
-  // console.log(findCountry(target.val));
 }
 
 function findCountry(countries) {
   const arrCountry = countries.length;
-  console.log(arrCountry);
+  // console.log(arrCountry);
 
   if (arrCountry > 10) {
     Notiflix.Notify.info(
@@ -49,9 +47,9 @@ function findCountry(countries) {
 function createMarcupAll(countries) {
   const marcupAll = countries
     .map(country => {
-      return `<div class="country">
-  <img src="${country.flags.svg}" width="35" height="25" alt="the flag of ${country.name.official}">
-<span>${country.name.official}</span>
+      return `<div class="country-all">
+  <img class="country-img" src="${country.flags.svg}" alt="the flag of ${country.name.official}">
+<p class="country-name-all">${country.name.official}</p>
 </div>`;
     })
     .join('');
@@ -62,14 +60,22 @@ function createCountryMarcup(countries) {
   const marcupCountry = countries
     .map(country => {
       return `
-    <img src="${country.flags.svg}" width="100" height="50" alt="the flag of ${
+      <div class="country">
+    <img class="country-img" src="${country.flags.svg}" alt="the flag of ${
         country.name.official
       }">
-    <h2>${country.name.official}</h2>
-<ul>
-  <li>Capital: ${country.capital}</li>
-  <li>Population: ${country.population}</li>
-  <li>Languages: ${Object.values(country.languages).join(', ')}</li>
+    <h2 class="country-name">${country.name.official}</h2>
+    </div>
+  <ul class="country-info">
+      <li><span class="country-info_item">Capital:</span> ${
+        country.capital
+      }</li>
+      <li><span class="country-info_item">Population:</span> ${
+        country.population
+      }</li>
+  <li><span class="country-info_item">Languages:</span> ${Object.values(
+    country.languages
+  ).join(', ')}</li>
 </ul>`;
     })
     .join('');
