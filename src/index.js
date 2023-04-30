@@ -76,7 +76,8 @@ function createCountryMarcup(countries) {
   <li><span class="country-info_item">Languages:</span> ${Object.values(
     country.languages
   ).join(', ')}</li>
-</ul>`;
+</ul>
+</div>`;
     })
     .join('');
   countryInfo.innerHTML = marcupCountry;
